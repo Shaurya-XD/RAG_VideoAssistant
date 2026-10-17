@@ -1,0 +1,26 @@
+# Streamlit user interface
+streamlit
+
+# YouTube audio download and uploaded audio processing
+yt-dlp
+pydub
+
+# Local speech recognition and Hindi-to-English speech translation
+openai-whisper
+torch
+
+# LangChain LCEL and Mistral API
+langchain
+langchain-core
+langchain-mistralai
+langchain-text-splitters
+
+# Retrieval-augmented generation (RAG)
+langchain-chroma
+chromadb
+langchain-huggingface
+sentence-transformers
+
+# PDF export and environment configuration
+reportlab
+python-dotenv

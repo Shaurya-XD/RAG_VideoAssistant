@@ -1,0 +1,60 @@
+
+# Python virtual environment
+.venv/
+venv/
+env/
+myvenv/
+
+# Environment variables and API keys
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# IDE and editor files
+.vscode/
+.idea/
+
+# Whisper and Hugging Face model files
+models/
+*.pt
+*.pth
+*.safetensors
+
+# Hugging Face local cache
+.cache/
+huggingface_cache/
+
+# Downloaded and uploaded audio/video
+uploads/
+downloads/
+temp/
+tmp/
+*.mp3
+*.mp4
+*.wav
+*.m4a
+*.webm
+
+# ChromaDB vector database
+chroma_db/
+chroma/
+chroma_storage/
+chroma.sqlite3
+
+# Generated meeting results
+outputs/
+exports/
+*.log
+
+# Operating system files
+.DS_Store
+Thumbs.db
