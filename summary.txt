@@ -1,9 +1,0 @@
-The speaker describes a recent two‑hour chess match between two advanced language‑model AIs—GPT‑6 “Astra” (Black) and Claude “Fable” (White). Unlike earlier experiments that produced many illegal moves, this game featured only one illegal move in about 70 plies and followed mainstream Sicilian Najdorf/Classic theory, suggesting the models draw from extensive opening databases rather than simply querying a Stockfish‑type engine.
-
-During the middlegame the AIs evaluated multiple tactical ideas—knight and bishop attacks, pawn pushes such as f4/f5, and queen maneuvers—often selecting moves that align with popular theory. The commentator notes moments that appear to involve genuine reasoning but admits they cannot confirm whether the models are reasoning or merely pattern‑matching.
-
-Key highlights include a pawn sacrifice on f6, a surprising queen‑b8 move that aligns the queen and rook on the b‑file, and a knight capture on d4 that traps the opponent’s queen. The speaker compares these choices to Stockfish recommendations, observing that the AIs sometimes deviate from the top engine line, occasionally for good effect and sometimes not. End‑game play remained legal and sensible, though the speaker cautions that the bots are still below grandmaster (≈3000) strength.
-
-The commentator speculates that the bots may follow a preset script resembling Stockfish’s second‑move choices, pointing to occasional “catastrophic mistakes” that argue against pure engine copying. They also remark on a single illegal rook capture by Fable and a later resignation by Astra after a winning pawn push identified by the speaker’s engine.
-
-Finally, the speaker announces plans to test Astra against other models (e.g., Opus 5.5), references past participation in a Kaggle AI chess championship, thanks listeners for support of their recent book *How to Win at Chess – Next Level*, and mentions an upcoming sequel, *How to Win at Chess – Master Level*.

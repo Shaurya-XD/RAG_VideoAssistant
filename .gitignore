@@ -18,14 +18,18 @@ dist/
 
 # Generated transcripts
 transcript.txt
+summary.txt
+key_points.txt
 transcripts/
 
 # Local Chroma database — use this folder when we add RAG
 chroma_db/
+vector_db/
 
 # Logs and test caches
 *.log
-.pytest_cache/  
+.pytest_cache/
+.ruff_cache/
 .coverage
 htmlcov/
 

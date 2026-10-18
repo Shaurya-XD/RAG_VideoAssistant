@@ -40,9 +40,7 @@ def transcribe_video(youtube_url: str) -> str:
                     "Do not paraphrase or correct the speaker's factual claims. "
                     "Mark unclear speech [inaudible] instead of guessing. "
                     "Group related sentences into paragraphs separated by a blank line. "
-                    "Start each paragraph with its first spoken word's timestamp "
-                    "in [MM:SS] or [HH:MM:SS] format. "
-                    "Return only the transcript."
+                    "Return only the transcript, without timestamps"
                 ),
             },
         ]

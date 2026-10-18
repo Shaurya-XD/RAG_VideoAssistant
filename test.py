@@ -6,7 +6,7 @@ from core.transcriber import transcribe_video
 def main():
     # Ask for the video URL in the terminal.
     # youtube_url = input("Enter a YouTube URL: ").strip()
-    youtube_url = "https://www.youtube.com/watch?v=_5p1_TNSWqQ"
+    youtube_url = "https://www.youtube.com/watch?v=v4r71kEdYME"
 
     print("Generating transcription...")
     transcript = transcribe_video(youtube_url)
