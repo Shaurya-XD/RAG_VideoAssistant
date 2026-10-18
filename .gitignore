@@ -22,7 +22,7 @@ summary.txt
 key_points.txt
 transcripts/
 
-# Local Chroma database — use this folder when we add RAG
+# Optional locally persisted Chroma databases
 chroma_db/
 vector_db/
 

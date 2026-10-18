@@ -1,17 +1,16 @@
-import os
-
 import tiktoken
 from dotenv import load_dotenv
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_groq import ChatGroq
 from langchain_text_splitters import RecursiveCharacterTextSplitter
+
+from core.rag_engine import get_llm
+from core.settings import validate_transcript
 
 
 load_dotenv()
 
 # Use the same tokenizer for counting and splitting text.
 TOKENIZER_NAME = "cl100k_base"
-tokenizer = tiktoken.get_encoding(TOKENIZER_NAME)
 
 
 def summarise_transcript(
@@ -20,25 +19,14 @@ def summarise_transcript(
     chunk_tokens: int = 4000,
 ) -> str:
 
-    if not transcript.strip():
-        raise ValueError("The transcript is empty.")
+    validate_transcript(transcript)
 
     if chunk_tokens <= 0:
         raise ValueError("chunk_tokens must be positive.")
 
-    api_key = os.getenv("GROQ_API_KEY")
-    model_name = os.getenv("GROQ_MODEL")
-
-    if not api_key or not model_name:
-        raise ValueError("Set GROQ_API_KEY and GROQ_MODEL in .env.")
-
-    model = ChatGroq(
-        model=model_name,
-        api_key=api_key,
-        temperature=0,
-        max_tokens=2048,
-        max_retries=2,
-    )
+    model = get_llm()
+    # Load lazily: opening the app doesn't need a tokenizer download.
+    tokenizer = tiktoken.get_encoding(TOKENIZER_NAME)
 
     # {language} and {text} are placeholders filled by invoke().
     prompt = ChatPromptTemplate.from_messages(
