@@ -201,6 +201,19 @@ with st.form("video_form"):
         process_video = st.form_submit_button("Analyze video →", type="primary", use_container_width=True)
     st.caption("Public YouTube videos only.")
 
+if not workspace["transcript"]:
+    # Brief feature descriptions keep the empty workspace informative.
+    transcript_info, summary_info, question_info = st.columns(3)
+    with transcript_info:
+        st.markdown("**Transcript**")
+        st.caption("Read and download the video's spoken content.")
+    with summary_info:
+        st.markdown("**Summary & key points**")
+        st.caption("Get the main ideas in English, Hindi, or the original language.")
+    with question_info:
+        st.markdown("**Ask questions**")
+        st.caption("Find answers grounded in the video.")
+
 if process_video:
     try:
         validated_url = canonical_youtube_url(url)
