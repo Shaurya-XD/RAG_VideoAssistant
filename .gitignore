@@ -1,60 +1,36 @@
-
-# Python virtual environment
-.venv/
-venv/
-env/
-myvenv/
-
-# Environment variables and API keys
+# API keys and local secrets
 .env
 .env.*
 !.env.example
 .streamlit/secrets.toml
 
-# Python cache files
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Python cache and generated package files
 __pycache__/
 *.py[cod]
-*.pyo
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
+*.egg-info/
+build/
+dist/
 
-# IDE and editor files
+# Generated transcripts
+transcript.txt
+transcripts/
+
+# Local Chroma database — use this folder when we add RAG
+chroma_db/
+
+# Logs and test caches
+*.log
+.pytest_cache/  
+.coverage
+htmlcov/
+
+# Editor and operating system files
 .vscode/
 .idea/
-
-# Whisper and Hugging Face model files
-models/
-*.pt
-*.pth
-*.safetensors
-
-# Hugging Face local cache
-.cache/
-huggingface_cache/
-
-# Downloaded and uploaded audio/video
-uploads/
-downloads/
-temp/
-tmp/
-*.mp3
-*.mp4
-*.wav
-*.m4a
-*.webm
-
-# ChromaDB vector database
-chroma_db/
-chroma/
-chroma_storage/
-chroma.sqlite3
-
-# Generated meeting results
-outputs/
-exports/
-*.log
-
-# Operating system files
 .DS_Store
 Thumbs.db

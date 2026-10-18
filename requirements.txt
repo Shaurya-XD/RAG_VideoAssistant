@@ -1,26 +1,29 @@
-# Streamlit user interface
+# Web interface
 streamlit
 
-# YouTube audio download and uploaded audio processing
-yt-dlp
-pydub
+# Gemini API: transcription from YouTube URLs
+google-genai
 
-# Local speech recognition and Hindi-to-English speech translation
-openai-whisper
-torch
+# Groq API: summaries, key points, and question answering
+groq
 
-# LangChain LCEL and Mistral API
+# LangChain: prompts and RAG workflows
 langchain
 langchain-core
-langchain-mistralai
 langchain-text-splitters
 
-# Retrieval-augmented generation (RAG)
-langchain-chroma
-chromadb
-langchain-huggingface
-sentence-transformers
+# Gemini embeddings and Groq integration with LangChain
+langchain-google-genai
+langchain-groq
 
-# PDF export and environment configuration
+# Vector database and its LangChain integration
+chromadb
+langchain-chroma
+
+# PDF export, retained from your previous project
 reportlab
+
+# Load local API keys from .env
 python-dotenv
+
+tiktoken
