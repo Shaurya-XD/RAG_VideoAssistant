@@ -19,8 +19,7 @@ directly to Gemini by URL; the app does not download them.
 - **Separate workspaces:** each video's temporary Chroma collection is isolated
   from other users' collections.
 - **Downloads:** save transcripts, summaries, and key points as text files.
-- **Demo controls:** optional password gate, request timeouts, and bounded inputs
-  and chat history.
+- **Demo controls:** request timeouts and bounded inputs and chat history.
 
 ## Tech stack
 
@@ -103,7 +102,7 @@ not supported by Gemini's direct YouTube input.
 
 1. Paste a public YouTube video link and select **Analyze video**.
 2. Open **Transcript** to read or download the generated text.
-3. Choose a summary language and select **Generate summary**.
+3. In **Summary & key points**, choose a summary language and select **Generate summary**.
 4. Select **Extract key points** to get bullet points from that summary.
 5. In **Ask questions**, select **Prepare video questions** once to build the
    video's index, then enter a question. Indexing is optional if you only want
@@ -124,8 +123,6 @@ not supported by Gemini's direct YouTube input.
    GEMINI_EMBEDDING_MODEL = "gemini-embedding-001"
    GROQ_API_KEY = "your-key"
    GROQ_MODEL = "your-groq-model"
-   # Recommended for a private demo using your own API quota:
-   APP_PASSWORD = "your-long-random-password"
    ```
 
 4. Deploy, then test transcription, summary, key points, and questions with a
@@ -157,8 +154,6 @@ the TOML file rather than inside a table.
   Concurrent requests or long summaries can hit rate limits; the UI asks the
   user to retry rather than showing raw provider errors. This is a small demo
   deployment, not a high-traffic service with guaranteed capacity.
-- `APP_PASSWORD` is an optional shared demo gate, not individual user accounts
-  or a replacement for production authentication and global quota controls.
 - Transcripts/questions are sent to Google/Groq for processing. Do not submit
   sensitive material without considering the providers' data policies.
 - Answers use retrieved excerpts, not the entire video or a current fact check.
@@ -176,7 +171,7 @@ The root `test.py`, `test_summary.py`, and `rag_test.py` are manual API demos,
 not the offline test suite. Running those scripts can consume API quota.
 
 The offline suite covers concurrent collection isolation, cleanup, failed
-indexing, input limits, incomplete transcription, the password gate, key-point
+indexing, input limits, incomplete transcription, the minimal workspace, key-point
 generation/retry, and the main UI flow. It uses real Chroma with fake embeddings
 and model responses; it does not prove that provider credentials, account quotas,
 or a particular video are available in a live deployment.

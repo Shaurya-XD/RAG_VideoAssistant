@@ -108,7 +108,7 @@ class StreamlitTests(unittest.TestCase):
         loop_patch.start()
         self.addCleanup(loop_patch.stop)
         env_patch = patch.dict(os.environ, {
-            "APP_PASSWORD": "", "GEMINI_API_KEY": "fake", "GEMINI_MODEL": "fake",
+            "GEMINI_API_KEY": "fake", "GEMINI_MODEL": "fake",
             "GEMINI_EMBEDDING_MODEL": "fake", "GROQ_API_KEY": "fake", "GROQ_MODEL": "fake",
         })
         env_patch.start()
@@ -162,11 +162,11 @@ class StreamlitTests(unittest.TestCase):
         with patch("core.rag_engine.get_llm", return_value=RunnableLambda(points)):
             app = AppTest.from_file(APP_PATH, default_timeout=30).run()
             language = "English"
-            app.selectbox[0].set_value(language)
             workspace = app.session_state["workspace"]
             workspace.update(url="https://www.youtube.com/watch?v=IPJdfGtFsuI", transcript="Source text.")
             workspace["summaries"][language] = "Keep this summary."
             app.run()
+            app.selectbox[0].set_value(language).run()
             self.click(app, "Extract key points")
             self.assertTrue(any("usage limit" in error.value for error in app.error))
             self.assertNotIn(language, workspace["key_points"])
@@ -176,19 +176,13 @@ class StreamlitTests(unittest.TestCase):
             self.assertFalse(app.error)
             self.assertEqual(app.session_state["workspace"]["key_points"][language], "- Recovered point")
 
-    def test_password_gate_blocks_workspace_until_authenticated(self):
-        with patch.dict(os.environ, {"APP_PASSWORD": "demo-test-password"}):
-            app = AppTest.from_file(APP_PATH, default_timeout=30).run()
-            self.assertFalse(app.exception)
-            self.assertNotIn("workspace", app.session_state)
-            app.text_input[0].set_value("wrong")
-            self.click(app, "Open workspace")
-            self.assertTrue(app.error)
-            self.assertNotIn("workspace", app.session_state)
-            app.text_input[0].set_value("demo-test-password")
-            self.click(app, "Open workspace")
-            self.assertTrue(app.session_state["authenticated"])
-            self.assertIn("workspace", app.session_state)
+    def test_workspace_opens_directly_without_sidebar(self):
+        app = AppTest.from_file(APP_PATH, default_timeout=30).run()
+        self.assertFalse(app.exception)
+        self.assertIn("workspace", app.session_state)
+        self.assertEqual(len(app.sidebar), 0)
+        self.assertEqual([field.label for field in app.text_input], ["YouTube video URL"])
+        self.assertEqual([title.value for title in app.title], ["Video Notes"])
 
 
 if __name__ == "__main__":
