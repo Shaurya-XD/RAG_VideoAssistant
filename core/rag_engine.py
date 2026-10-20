@@ -5,6 +5,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnableLambda, RunnablePassthrough
 from langchain_groq import ChatGroq
 
+
 from core.settings import MAX_QUESTION_CHARS
 
 from core.vector_store import (
